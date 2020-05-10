@@ -66,8 +66,10 @@ AnswerArray.push(changeCase);
 
 function sumOfSquares(array){
     let squaresArray=array.map(i=>Math.pow(i,2));
-    
-    return squaresArray;
+    let sum=squaresArray.reduce((a,b)=>{
+        return a+b;
+    },0)
+    return sum;
 }
 AnswerArray.push(sumOfSquares);
 /*
