@@ -94,7 +94,7 @@ function truncateIfLongerThanthis(length,inputString){
     return inputString;
 
 }
-AnswerArray.push(oddOrEven)
+AnswerArray.push(truncateIfLongerThanthis)
 //7. Write a JavaScript program that accept two integers and display the larger usingfindLarge() function.
 
 function findLarger(num1,num2){
