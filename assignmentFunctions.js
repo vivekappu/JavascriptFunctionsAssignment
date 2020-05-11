@@ -78,18 +78,21 @@ if the current number is odd or even, and display the message to the screen as o
 or even.
 */
 function oddOrEven(){
+    html="";
     for(let i=0;i<=15;i++){
         if(i%2){
-            console.log("odd");
+            html+="odd";
         }
         else{
-            console.log("even");
+            html+="even";
         }
+        html+="<br>"
     }
+    return html;
 }
 AnswerArray.push(oddOrEven);
 //6. Write a JavaScript function to truncate a string if it is longer than the specifiednumber of characters.
-function truncateIfLongerThanthis(length,inputString){
+function truncateIfLongerThanthis(inputString,length){
     if(inputString.length>length){
         return inputString.substr(0,length);
     }
@@ -105,7 +108,7 @@ function findLarger(num1,num2){
       larger=num2;
      
   }
-  console.log(larger+" is larger");
+  return larger;
 }
 AnswerArray.push(findLarger);
 /*
@@ -144,14 +147,21 @@ Jav
 .
 Javascript
 */
-function pyramidUsingJavascript(){
+function halfPyramidUsingJavascript(){
+   let html=''
    let word='';
-  for( letter of "Javascript"){
+  for( let letter of "Javascript"){
       word+=letter;
-      console.log(word);
+      let line='';
+      for(let l of word){
+          line+=l;
+      }
+      html+=line+'<br>';
   }
+  return html;
+  
 }
-AnswerArray.push(pyramidUsingJavascript);
+AnswerArray.push(halfPyramidUsingJavascript);
 /*
 10.Write a JavaScript program to construct the following pattern, using a nested for
 loop
@@ -161,14 +171,15 @@ loop
 ****
 */
 function printHalfPyramidPattern(char,n){
-    
+    let pattern='';
     for(i=0;i<n;i++){
-        s='';
+        let s='';
        for(j=0;j<i+1;j++){
            s+=char;
        }
-       console.log(s);
+       pattern+=(s+'<br>');
     }
+    return pattern;
 }
 AnswerArray.push(printHalfPyramidPattern);
 //printHalfPyramidPattern('*',4); will print the required pattern
@@ -179,7 +190,32 @@ for(let i=0;i<10;i++){
 /*output feature is not yet fully working ,i'm working on it. :) */
 let select=document.querySelector('select');
 let input=document.querySelector('input');
-let output=document.querySelector('.output');
-input.addEventListener('change',()=>{
-    output.innerText=AnswerArray[select.value](input.value);
+var output=document.querySelector('.output');
+var button=document.querySelector('button');
+select.addEventListener('change',()=>{
+    output.innerText="";
 })
+button.addEventListener('click',()=>{
+     
+    console.log(select.value);
+    let array=input.value.split(',');
+    let question=Number(select.value);
+    switch(question){
+        case 2:output.innerText=AnswerArray[question](input.value);
+        break;
+        case 4:output.innerHTML=AnswerArray[question]();
+        break;
+        case 5:output.innerText=AnswerArray[question](array[0],array[1]);
+        break;
+        case 6:output.innerText=AnswerArray[question](array[0],array[1]);
+        break;
+        case 8:
+            output.innerHTML=AnswerArray[question]();
+        break;
+        case 9:output.innerHTML=AnswerArray[question]("*",4);
+        break;
+        default:output.innerText=AnswerArray[question](array);console.log("here");
+    }
+   
+});
+

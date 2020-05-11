@@ -21,3 +21,9 @@ background-color: thistle;
     padding:10px  0 50px 0;
     margin-top:20px;
 }
+.output{
+    background-color: turquoise;
+}
+button{
+    background-color: teal;
+}
